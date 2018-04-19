@@ -27,27 +27,27 @@
     "build": "rimraf dist && ts-node tools/inline-styles.ts && tsc -p tsconfig-esm.json && rollup -c rollup.config.js dist/ng4-select2.js > dist/ng4-select2.bundle.js && cp package.json dist && ts-node tools/cleanup.ts && ngc -c tsconfig-esm.json && npm run finish"
   },
   "dependencies": {
-    "@types/jquery": "^2.0.39",
-    "@types/select2": "^4.0.31"
+    "@types/jquery": "^3.2.12",
+    "@types/select2": "^4.0.44"
   },
   "peerDependencies": {
-    "@angular/core": ">=4.3.0"
+    "@angular/core": "^5.2.5"
   },
   "devDependencies": {
-    "@angular/common": "^4.3.0",
-    "@angular/compiler": "^4.3.0",
-    "@angular/compiler-cli": "^4.3.0",
-    "@angular/core": "^4.3.0",
-    "@angular/forms": "^4.3.0",
-    "@angular/platform-browser": "^4.3.0",
-    "@angular/platform-browser-dynamic": "^4.3.0",
-    "@types/node": "^7.0.0",
+    "@angular/common": "^5.2.5",
+    "@angular/compiler": "^5.2.5",
+    "@angular/compiler-cli": "^5.2.5",
+    "@angular/core": "^5.2.5",
+    "@angular/forms": "^5.2.5",
+    "@angular/platform-browser": "^5.2.5",
+    "@angular/platform-browser-dynamic": "^5.2.5",
+    "@types/node": "^8.0.27",
     "core-js": "^2.4.1",
     "rimraf": "^2.5.4",
     "rollup": "^0.41.4",
-    "rxjs": "^5.0.3",
-    "ts-node": "^2.0.0",
-    "typescript": "^2.1.0",
-    "zone.js": "^0.8.0"
+    "rxjs": "^5.5.2",
+    "ts-node": "~3.3.0",
+    "typescript": "2.4.2",
+    "zone.js": "0.8.17"
   }
 }

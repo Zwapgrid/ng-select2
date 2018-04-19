@@ -3,7 +3,8 @@ export default {
     moduleName: 'ng4-select2',
     external: [
         '@angular/core',
-        '@angular/common'
+        '@angular/common',
+        '@angular/forms'
     ],
     globals: {
         '@angular/core': 'ng.core',
