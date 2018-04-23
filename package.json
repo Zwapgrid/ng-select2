@@ -1,53 +1,69 @@
 {
-  "name": "ng4-select2",
-  "version": "1.0.0-beta.14",
-  "description": "Angular2 wrapper for select2. A fork from https://github.com/NejcZdovc/ng2-select2",
-  "main": "ng4-select2.bundle.js",
-  "jsnext:main": "ng4-select2.js",
-  "typings": "ng4-select2.d.ts",
-  "module": "ng4-select2.js",
-  "types": "ng4-select2.d.ts",
+  "name": "@zwapgrid/ng-select2",
+  "version": "0.0.1beta",
+  "license": "MIT",
+  "description": "Angular wrapper for select2. A fork from https://github.com/luigledr/ng4-select2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/luigledr/ng4-select2.git"
+    "url": "https://github.com/Zwapgrid/ng4-select2.git"
   },
   "keywords": [
-    "angular4",
+    "angular",
+    "angular5",
     "select2",
-    "wrap"
+    "wrap",
+    "wrapper"
   ],
   "author": "Luiz Oliveira <luizoliveira@outlook.com>",
-  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/luigledr/ng4-select2/issues"
+    "url": "https://github.com/Zwapgrid/ng4-select2/issues"
   },
-  "homepage": "https://github.com/luigledr/ng4-select2",
+  "homepage": "https://github.com/Zwapgrid/ng4-select2",
   "scripts": {
-    "finish": "mv lib/ng4-select2.component.ts.bak lib/ng4-select2.component.ts && cp README.md dist && rimraf dist/ng4-select2.component.css",
-    "build": "rimraf dist && ts-node tools/inline-styles.ts && tsc -p tsconfig-esm.json && rollup -c rollup.config.js dist/ng4-select2.js > dist/ng4-select2.bundle.js && cp package.json dist && ts-node tools/cleanup.ts && ngc -c tsconfig-esm.json && npm run finish"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --prod",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
+  "private": true,
   "dependencies": {
-    "@types/jquery": "^3.2.12",
-    "@types/select2": "^4.0.44"
-  },
-  "peerDependencies": {
-    "@angular/core": "^5.2.5"
+    "@angular/animations": "^5.2.0",
+    "@angular/common": "^5.2.0",
+    "@angular/compiler": "^5.2.0",
+    "@angular/core": "^5.2.0",
+    "@angular/forms": "^5.2.0",
+    "@angular/http": "^5.2.0",
+    "@angular/platform-browser": "^5.2.0",
+    "@angular/platform-browser-dynamic": "^5.2.0",
+    "@angular/router": "^5.2.0",
+    "core-js": "^2.4.1",
+    "jquery": "^3.3.1",
+    "rxjs": "^5.5.6",
+    "select2": "^4.0.6-rc.1",
+    "zone.js": "^0.8.19"
   },
   "devDependencies": {
-    "@angular/common": "^5.2.5",
-    "@angular/compiler": "^5.2.5",
-    "@angular/compiler-cli": "^5.2.5",
-    "@angular/core": "^5.2.5",
-    "@angular/forms": "^5.2.5",
-    "@angular/platform-browser": "^5.2.5",
-    "@angular/platform-browser-dynamic": "^5.2.5",
-    "@types/node": "^8.0.27",
-    "core-js": "^2.4.1",
-    "rimraf": "^2.5.4",
-    "rollup": "^0.41.4",
-    "rxjs": "^5.5.2",
-    "ts-node": "~3.3.0",
-    "typescript": "2.4.2",
-    "zone.js": "0.8.17"
+    "@angular/cli": "~1.7.4",
+    "@angular/compiler-cli": "^5.2.0",
+    "@angular/language-service": "^5.2.0",
+    "@types/jasmine": "~2.8.3",
+    "@types/jasminewd2": "~2.0.2",
+    "@types/node": "~6.0.60",
+    "@types/jquery": "^3.3.1",
+    "@types/select2": "^4.0.44",
+    "codelyzer": "^4.0.1",
+    "jasmine-core": "~2.8.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~2.0.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "^1.2.1",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "protractor": "~5.1.2",
+    "ts-node": "~4.1.0",
+    "tslint": "~5.9.1",
+    "typescript": "~2.5.3"
   }
 }
