@@ -41,7 +41,7 @@ export class MultipleComponent implements OnInit {
     this.current = this.value.join(' | ');
   }
 
-  changed(data: {value: string[]}) {
-    this.current = data.value.join(' | ');
+  changed(values: string[]) {
+    this.current = values.join(' | ');
   }
 }

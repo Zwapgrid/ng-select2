@@ -10,6 +10,8 @@ export class OptionsComponent implements OnInit {
   public exampleData: Array<Select2OptionData>;
   public options: Select2Options;
 
+  public model:string[];
+
   ngOnInit() {
     this.exampleData = [
       {

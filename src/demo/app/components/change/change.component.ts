@@ -16,12 +16,11 @@ export class ChangeComponent implements OnInit {
 
   ngOnInit() {
     this.exampleData = this.service.getChangeList();
-    this.startValue = 'car3';
-    this.selected = '';
+    this.selected = 'car3';
   }
 
   public changeValue() {
-    this.startValue = 'car2';
+    this.selected = 'car2';
   }
 
   public changeData() {

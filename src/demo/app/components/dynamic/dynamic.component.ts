@@ -13,6 +13,7 @@ import 'rxjs/add/operator/delay';
 export class DynamicComponent implements OnInit {
   public exampleData: Observable<Array<Select2OptionData>>;
   public startValue: Observable<string>;
+  public model:string;
 
   constructor(private service: DataService) {}
 

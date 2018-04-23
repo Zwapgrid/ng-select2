@@ -9,6 +9,8 @@ import { Select2OptionData } from '../../../../index';
 export class BasicComponent implements OnInit {
   public exampleData: Array<Select2OptionData>;
 
+  public model:string;
+
   ngOnInit() {
     this.exampleData = [
       {

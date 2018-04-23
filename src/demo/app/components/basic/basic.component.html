@@ -1,3 +1,6 @@
 <h2>1. Basic demo</h2>
 
-<select2 [data]="exampleData"></select2>
+<ng-select2 [(ngModel)]="model" [data]="exampleData"></ng-select2>
+<hr>
+<div>NgModel value: {{model}}</div>
+<div>Set value to <button (click)="model = 'basic4'">basic4</button></div>
