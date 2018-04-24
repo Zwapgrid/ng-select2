@@ -42,6 +42,6 @@ export class MultipleComponent implements OnInit {
   }
 
   changed(values: string[]) {
-    this.current = values.join(' | ');
+    this.current = values && values.length > 0 ? values.join(' | ') : null;
   }
 }

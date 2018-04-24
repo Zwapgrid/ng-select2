@@ -92,12 +92,20 @@ import {
       this.renderer.setElementAttribute(this.selector.nativeElement, 'data-placeholder', this.placeholder);
       this.renderer.setElementAttribute(this.selector.nativeElement, 'data-dropdownParent', this.dropdownParent);
       this.renderer.setElementAttribute(this.selector.nativeElement, 'data-allow-clear', this.allowClear.toString());
-  
+
       this.initPlugin();
-  
-      if (typeof this.value !== 'undefined') {
-        this.setElementValue(this.value);
-      }
+
+      setTimeout(() =>{
+        if (typeof this.value !== 'undefined') {
+          this.setElementValue(this.value);
+        }
+        else{
+          var val = <string|string[]>this.element.val();
+          if (val != null && val != undefined && val.length > 0){
+            this.setElementValue(val);
+          }
+        }
+      });
   
       this.element.on('change select2:select select2:unselect', (e: any) => {
         this.setElementValue(<string|string[]>this.element.val());
@@ -170,6 +178,8 @@ import {
           }
           this.renderer.setElementProperty(this.selector.nativeElement, 'value', isOptionsExists ? newValue : null);
         }
+
+        this.value = newValue && isOptionsExists ? newValue : null;
 
         if(this.element) {
           this.element.trigger('change.select2');
