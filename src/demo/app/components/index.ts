@@ -7,3 +7,4 @@ export { OptionsComponent } from './options/options.component';
 export { TemplateComponent } from './template/template.component';
 export { TagsComponent } from './tags/tags.component';
 export { DisabledComponent } from './disabled/disabled.component';
+export { DynamicOptionsComponent } from './dynamic-options/dynamic-options.component';

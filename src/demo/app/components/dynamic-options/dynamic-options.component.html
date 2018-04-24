@@ -1,0 +1,12 @@
+<h2>10. Demo with dynamic options</h2>
+
+<ng-select2 [(ngModel)]="model" [options]="options"></ng-select2>
+<br>
+<hr>
+<div> Set options (1) <button (click)="options = options1">Set 1</button></div>
+<br>
+<div> Set options (2) <button (click)="options = options2">Set 2</button></div>
+<hr>
+<div>Current options object:</div>
+<pre>{{options | json}}</pre>
+

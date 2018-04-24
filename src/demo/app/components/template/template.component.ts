@@ -16,6 +16,7 @@ export class TemplateComponent implements OnInit {
   ngOnInit() {
     this.exampleData = this.service.getTemplateList();
     this.options = {
+      width:"150",
       templateResult: this.templateResult,
       templateSelection: this.templateSelection
     }

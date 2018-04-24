@@ -25,6 +25,7 @@ export class TagsComponent implements OnInit {
     ];
 
     this.options = {
+      width:"300",
       tags:true,
       multiple: true
     }

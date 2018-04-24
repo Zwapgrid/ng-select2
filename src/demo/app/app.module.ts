@@ -15,7 +15,8 @@ import { BasicComponent,
   TemplateComponent, 
   MultipleComponent, 
   TagsComponent,
-  DisabledComponent
+  DisabledComponent,
+  DynamicOptionsComponent
 } from './components';
 
 
@@ -62,6 +63,10 @@ const appRoutes:Routes = [
     component:DisabledComponent
   },
   {
+    path: 'dynamic-options',
+    component:DynamicOptionsComponent
+  },
+  {
     path: '**',
     redirectTo: '/basic'
   },
@@ -79,7 +84,8 @@ const appRoutes:Routes = [
     MatcherComponent,
     MultipleComponent,
     TagsComponent,
-    DisabledComponent
+    DisabledComponent,
+    DynamicOptionsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

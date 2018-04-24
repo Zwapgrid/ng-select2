@@ -35,6 +35,7 @@ export class MultipleComponent implements OnInit {
     this.value = ['multiple2', 'multiple4'];
 
     this.options = {
+      width:"500",
       multiple: true
     }
 

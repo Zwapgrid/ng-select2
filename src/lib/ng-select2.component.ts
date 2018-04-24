@@ -40,12 +40,7 @@ import {
     // value for placeholder
     @Input() placeholder = '';
   
-    @Input() dropdownParent = ''; 
-  
     @Input() allowClear = false;
-  
-    // width of select2 input
-    @Input() width: string;
   
     // all additional options
     @Input() options: Select2Options;
@@ -69,17 +64,14 @@ import {
         return;
       }
 
-      if(changes['data'] && JSON.stringify(changes['data'].previousValue) !== JSON.stringify(changes['data'].currentValue)) {
+      if(changes['options'] && JSON.stringify(changes['options'].previousValue) !== JSON.stringify(changes['options'].currentValue) ||
+        changes['data'] && JSON.stringify(changes['data'].previousValue) !== JSON.stringify(changes['data'].currentValue)) {
         this.initPlugin();
         this.setElementValue(this.value);
       }
   
       if (changes['placeholder'] && changes['placeholder'].previousValue !== changes['placeholder'].currentValue) {
         this.renderer.setElementAttribute(this.selector.nativeElement, 'data-placeholder', this.placeholder);
-      }
-  
-      if (changes['dropdownParent'] && changes['dropdownParent'].previousValue !== changes['dropdownParent'].currentValue) {
-        this.renderer.setElementAttribute(this.selector.nativeElement, 'data-dropdownParent', this.dropdownParent);
       }
   
       if (changes['allowClear'] && changes['allowClear'].previousValue !== changes['allowClear'].currentValue) {
@@ -90,7 +82,6 @@ import {
     ngAfterViewInit() {
       this.element = jQuery(this.selector.nativeElement);
       this.renderer.setElementAttribute(this.selector.nativeElement, 'data-placeholder', this.placeholder);
-      this.renderer.setElementAttribute(this.selector.nativeElement, 'data-dropdownParent', this.dropdownParent);
       this.renderer.setElementAttribute(this.selector.nativeElement, 'data-allow-clear', this.allowClear.toString());
 
       this.initPlugin();
@@ -132,22 +123,14 @@ import {
         this.renderer.setElementProperty(this.selector.nativeElement, 'innerHTML', '');
       }
   
+      // place to set some default settings
       let options: Select2Options = {
-        data: this.data,
-        width: (this.width) ? this.width : 'resolve'
+        data:this.data
       };
-  
-      if (this.dropdownParent) {
-        options = {
-          data: this.data,
-          width: (this.width) ? this.width : 'resolve',
-          dropdownParent: jQuery('#' + this.dropdownParent)
-        };
-      }
   
       // this.options.placeholder = '::SELECT::';
       Object.assign(options, this.options);
-  
+
       if(options.matcher) {
         jQuery.fn.select2.amd.require(['select2/compat/matcher'], (oldMatcher: any) => {
           options.matcher = oldMatcher(options.matcher);
@@ -161,7 +144,8 @@ import {
         this.element.select2(options);
       }
   
-      this.renderer.setElementProperty(this.selector.nativeElement, 'disabled', this.disabled);
+      var isDisabled = this.options && this.options.disabled === true;
+      this.setDisabledState(isDisabled);
     }
   
     private setElementValue (newValue: string | string[]) {
