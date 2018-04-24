@@ -7,7 +7,15 @@ import { AppComponent } from './app.component';
 import { Select2Module } from '../../index';
 
 import { DataService } from './services/data.service';
-import { BasicComponent, ChangeComponent, OptionsComponent, DynamicComponent, MatcherComponent, TemplateComponent, MultipleComponent } from './components';
+import { BasicComponent, 
+  ChangeComponent, 
+  OptionsComponent, 
+  DynamicComponent, 
+  MatcherComponent, 
+  TemplateComponent, 
+  MultipleComponent, 
+  TagsComponent 
+} from './components';
 
 
 const appRoutes:Routes = [
@@ -45,6 +53,10 @@ const appRoutes:Routes = [
     component:MultipleComponent
   },
   {
+    path: 'tags',
+    component:TagsComponent
+  },
+  {
     path: '**',
     redirectTo: '/basic'
   },
@@ -60,7 +72,8 @@ const appRoutes:Routes = [
     OptionsComponent,
     TemplateComponent,
     MatcherComponent,
-    MultipleComponent
+    MultipleComponent,
+    TagsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

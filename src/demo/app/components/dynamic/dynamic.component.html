@@ -1,6 +1,6 @@
 <h2>5. Demo dynamic loading</h2>
 <p>Delay for data is 4 second and 6 seconds for selected value</p>
-<ng-select2 [data]="exampleData | async" [(ngModel)]="model" [value]="startValue | async" [width]="150"></ng-select2>
+<ng-select2 [data]="exampleData | async" [(ngModel)]="model" [width]="150"></ng-select2>
 <br/>
 <div>Data count: {{(exampleData | async)?.length }}</div>
 <div *ngIf="model">Value set to: {{model}}</div>

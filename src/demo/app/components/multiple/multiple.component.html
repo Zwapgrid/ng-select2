@@ -3,7 +3,7 @@
 <ng-select2 [data]="exampleData"
          [options]="options"
          [width]="500"
-         [value]="value"
+         [(ngModel)]="value"
          (valueChanged)="changed($event)"
 ></ng-select2>
 <br/><br/>

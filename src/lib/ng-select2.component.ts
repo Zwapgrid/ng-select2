@@ -45,9 +45,6 @@ import {
   
     @Input() allowClear = false;
   
-    // value for select2
-    @Input() value: string | string[];
-  
     // width of select2 input
     @Input() width: string;
   
@@ -60,6 +57,8 @@ import {
     // emitter when value is changed
     @Output() valueChanged = new EventEmitter<string|string[]>();
   
+
+    private value:string|string[];
     private element: JQuery<HTMLElement> = undefined;
     private check: boolean = false;
   
@@ -73,19 +72,10 @@ import {
       if(!this.element) {
         return;
       }
-  
+
       if(changes['data'] && JSON.stringify(changes['data'].previousValue) !== JSON.stringify(changes['data'].currentValue)) {
         this.initPlugin();
-  
-        const newValue: string | string[] = this.value;
-        this.setElementValue(newValue);
-      }
-  
-      if(changes['value'] && changes['value'].previousValue !== changes['value'].currentValue) {
-        const newValue: string = changes['value'].currentValue;
-  
-        this.setElementValue(newValue);
-        this.valueChanged.emit(newValue);
+        this.setElementValue(this.value);
       }
   
       if(changes['disabled'] && changes['disabled'].previousValue !== changes['disabled'].currentValue) {
@@ -121,7 +111,6 @@ import {
         var newValue =  this.element.val();
         var value = typeof newValue  === "number" ? newValue.toString() : <string | string[]>newValue;
   
-        this.valueChanged.emit(value);
         this.setElementValue(value);
       });
     }
@@ -179,22 +168,29 @@ import {
     }
   
     private setElementValue (newValue: string | string[]) {
+      var isOptionsExists:boolean = false;
         if(Array.isArray(newValue)) {
           for (const option of this.selector.nativeElement.options) {
-            this.renderer.setElementProperty(option, 'selected', (newValue.indexOf(option.value) > -1));
+            var isSelected = (newValue.indexOf(option.value) > -1);
+            this.renderer.setElementProperty(option, 'selected', isSelected);
+            isOptionsExists = isOptionsExists || isSelected;
           }
         } else {
-          this.renderer.setElementProperty(this.selector.nativeElement, 'value', newValue);
+          for (const option of this.selector.nativeElement.options){
+            isOptionsExists = isOptionsExists || option.value == newValue;
+          }
+          this.renderer.setElementProperty(this.selector.nativeElement, 'value', isOptionsExists ? newValue : null);
         }
   
         if(this.element) {
           this.element.trigger('change.select2');
+          this.valueChanged.emit(newValue && isOptionsExists ? newValue : null);
         }
     }
   
     //#region ControlValueAccessor
     writeValue(value: string|string[]) {
-      if (value !== undefined) {
+      if (value !== undefined && value != this.value) {
         this.value = value;
         this.setElementValue(value);
       }
@@ -205,6 +201,8 @@ import {
     }
   
     registerOnTouched(fn: any): void {}
+
+    // TODO add support for disabled
 
     //#endregion
   }

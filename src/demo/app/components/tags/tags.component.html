@@ -1,0 +1,9 @@
+<h2>8. Demo with tags</h2>
+
+<ng-select2 [(ngModel)]="model" [data]="exampleData" [width]="300" [options]="options"></ng-select2>
+<hr>
+<div *ngIf="model">
+    <div *ngFor="let item of model">
+        <b>{{item}}</b> is selected
+    </div>
+</div>
