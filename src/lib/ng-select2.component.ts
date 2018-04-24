@@ -40,16 +40,12 @@ import {
     // value for placeholder
     @Input() placeholder = '';
   
-    @Input() dropdownParent = '';
-  
+    @Input() dropdownParent = ''; 
   
     @Input() allowClear = false;
   
     // width of select2 input
     @Input() width: string;
-  
-    // enable / disable select2
-    @Input() disabled: boolean = false;
   
     // all additional options
     @Input() options: Select2Options;
@@ -59,13 +55,13 @@ import {
   
 
     private value:string|string[];
+    private disabled:boolean = false;
     private element: JQuery<HTMLElement> = undefined;
     private check: boolean = false;
   
     constructor(private renderer: Renderer) { }
   
     ngOnInit() {
-
     }
   
     ngOnChanges(changes: SimpleChanges) {
@@ -76,10 +72,6 @@ import {
       if(changes['data'] && JSON.stringify(changes['data'].previousValue) !== JSON.stringify(changes['data'].currentValue)) {
         this.initPlugin();
         this.setElementValue(this.value);
-      }
-  
-      if(changes['disabled'] && changes['disabled'].previousValue !== changes['disabled'].currentValue) {
-        this.renderer.setElementProperty(this.selector.nativeElement, 'disabled', this.disabled);
       }
   
       if (changes['placeholder'] && changes['placeholder'].previousValue !== changes['placeholder'].currentValue) {
@@ -107,11 +99,8 @@ import {
         this.setElementValue(this.value);
       }
   
-      this.element.on('select2:select select2:unselect', (e: any) => {
-        var newValue =  this.element.val();
-        var value = typeof newValue  === "number" ? newValue.toString() : <string | string[]>newValue;
-  
-        this.setElementValue(value);
+      this.element.on('change select2:select select2:unselect', (e: any) => {
+        this.setElementValue(<string|string[]>this.element.val());
       });
     }
   
@@ -181,7 +170,7 @@ import {
           }
           this.renderer.setElementProperty(this.selector.nativeElement, 'value', isOptionsExists ? newValue : null);
         }
-  
+
         if(this.element) {
           this.element.trigger('change.select2');
           this.valueChanged.emit(newValue && isOptionsExists ? newValue : null);
@@ -200,9 +189,13 @@ import {
       this.valueChanged.subscribe(fn);
     }
   
+    // TODO implement
     registerOnTouched(fn: any): void {}
 
-    // TODO add support for disabled
+    setDisabledState(isDisabled: boolean): void {
+      this.disabled = isDisabled;
+      this.renderer.setElementProperty(this.selector.nativeElement, 'disabled', isDisabled);
+    }
 
     //#endregion
   }

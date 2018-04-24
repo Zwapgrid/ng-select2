@@ -14,7 +14,8 @@ import { BasicComponent,
   MatcherComponent, 
   TemplateComponent, 
   MultipleComponent, 
-  TagsComponent 
+  TagsComponent,
+  DisabledComponent
 } from './components';
 
 
@@ -57,6 +58,10 @@ const appRoutes:Routes = [
     component:TagsComponent
   },
   {
+    path: 'disabled',
+    component:DisabledComponent
+  },
+  {
     path: '**',
     redirectTo: '/basic'
   },
@@ -73,7 +78,8 @@ const appRoutes:Routes = [
     TemplateComponent,
     MatcherComponent,
     MultipleComponent,
-    TagsComponent
+    TagsComponent,
+    DisabledComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
