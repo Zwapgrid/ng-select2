@@ -43,7 +43,7 @@ import {
     @Input() allowClear = false;
   
     // all additional options
-    @Input() options: Select2Options;
+    @Input() options: any;
   
     // emitter when value is changed
     @Output() valueChanged = new EventEmitter<string|string[]>();
@@ -124,7 +124,7 @@ import {
       }
   
       // place to set some default settings
-      let options: Select2Options = {
+      let options: any = {
         data:this.data
       };
   
