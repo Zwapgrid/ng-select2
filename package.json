@@ -1,6 +1,6 @@
 {
   "name": "@zwapgrid/ng-select2",
-  "version": "0.0.1beta",
+  "version": "0.0.1-beta",
   "license": "MIT",
   "description": "Angular wrapper for select2. A fork from https://github.com/luigledr/ng4-select2",
   "repository": {
