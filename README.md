@@ -1,6 +1,6 @@
 # Angular wrapper for Select2 (ng-select2)
 
-For Angular version 5.x.x and up
+For Angular version 6.x.x
 
 
 ## Prerequisites
