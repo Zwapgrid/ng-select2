@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Select2OptionData } from '../../../../index';
+import { Options } from 'select2';
 
 @Component({
   selector: 'app-dynamic-options',
@@ -7,9 +7,9 @@ import { Select2OptionData } from '../../../../index';
   styleUrls: ['./dynamic-options.component.css']
 })
 export class DynamicOptionsComponent implements OnInit {
-  public options: Select2Options;
-  public options1: Select2Options;
-  public options2: Select2Options;
+  public options: Options;
+  public options1: Options;
+  public options2: Options;
 
   public model:string|string[];
 

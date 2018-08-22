@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Select2OptionData } from '../../../../index';
+import { Options } from 'select2';
 
 @Component({
   selector: 'app-disabled',
@@ -8,7 +9,7 @@ import { Select2OptionData } from '../../../../index';
 })
 export class DisabledComponent implements OnInit {
   public exampleData: Array<Select2OptionData>;
-  public options: Select2Options;
+  public options: Options;
 
   public model:string;
   public disabled:boolean = false;

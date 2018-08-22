@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Select2TemplateFunction, Select2OptionData } from '../../../../index';
 import { DataService } from '../../services/data.service';
+import { Options } from 'select2';
 
 @Component({
   selector: 'app-template',
@@ -9,7 +10,7 @@ import { DataService } from '../../services/data.service';
 })
 export class TemplateComponent implements OnInit {
   public exampleData: Array<Select2OptionData>;
-  public options: Select2Options;
+  public options: Options;
 
   constructor(private service: DataService) {}
 

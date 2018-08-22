@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Select2OptionData } from '../../../../index';
+import { Options, OptionData, SearchOptions } from 'select2';
 
 @Component({
   selector: 'app-matcher',
@@ -7,13 +8,18 @@ import { Select2OptionData } from '../../../../index';
   styleUrls: ['./matcher.component.css']
 })
 export class MatcherComponent implements OnInit {
-  public options: Select2Options;
+  public options: Options;
   public exampleData: Array<Select2OptionData>;
 
   ngOnInit() {
     this.options = {
-      matcher: (term: string, text: string) => {
-        return text.toUpperCase().indexOf(term.toUpperCase()) == 0;
+      matcher: (params: SearchOptions, data: OptionData) => {
+        var term = <any>params;
+        var text = <any>data;
+        if (text.toUpperCase().indexOf(term.toUpperCase()) == 0){
+          return <OptionData>(<any>true);
+        }
+        return null;
       }
     };
 

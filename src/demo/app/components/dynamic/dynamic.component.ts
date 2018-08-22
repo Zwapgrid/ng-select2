@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Select2OptionData } from '../../../../index';
 import { DataService } from '../../services/data.service';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/delay';
+import { Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dynamic',
@@ -17,7 +17,7 @@ export class DynamicComponent implements OnInit {
   constructor(private service: DataService) {}
 
   ngOnInit() {
-    this.exampleData = this.service.getDynamicList().delay(4000);
+    this.exampleData = this.service.getDynamicList().pipe(delay(4000));
     Observable.create(obs => {
       obs.next('dyn3');
       obs.complete();
