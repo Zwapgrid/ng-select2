@@ -20,5 +20,9 @@
     ],
     "module": "es2015",
     "baseUrl": "./"
-  }
+  },
+  "include": [
+    "src/lib/*.ts",
+    "src/index.ts"
+  ]
 }
